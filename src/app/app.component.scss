@@ -1,0 +1,131 @@
+.row {
+  background-repeat: repeat-x;
+  list-style: none;
+  margin: 2em -3em;
+  padding: 0;
+  background-image: url('http://svgur.com/i/Ag.svg')
+}
+
+// <li>
+// Each one contains a bulb and a letter
+.item {
+  display: inline-block;
+  margin: 1em .5em 0;
+  position: relative;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+// <span>
+// A painted letter
+.letter {
+  cursor: pointer;
+  display: block;
+  font-size: 4em;
+}
+
+// <span>
+// A bulb
+.bulb {
+  background-color: currentColor;
+  border-radius: 50%;
+  display: block;
+  filter: drop-shadow(.3em .3em rgba(#000,0.1));
+  height: 1em;
+  margin: -.2em auto -1em;
+  opacity: .7;
+  position: relative;
+  width: .4em;
+  z-index: 9;
+  
+  .flicker & {
+    background-color: #556;
+  }
+  
+  &.lit {
+    background: radial-gradient(#fff, #aaa), currentColor;
+    background-blend-mode: screen;
+    box-shadow: 0 .5em .5em currentColor,
+                0 .5em 1em currentColor,
+                0 .5em 1.5em currentColor,
+                0 .5em 3em 2em currentColor;
+    opacity: 1;
+    transition: all .1s ease;
+  }
+  
+  // A bulb's "socket", ie the black bit
+  &:before {
+    background-color: #111;
+    background: linear-gradient(to right, #000, #222, #000);
+    content:'';
+    display: block;
+    height: .4em;
+    left: 0;
+    margin: auto;
+    position: absolute;
+    right: 0;
+    top: -.3em;
+    width: .3em;
+  }
+  
+  // Small reflection on the bulb
+  &:after {
+    background-color: #fff;
+    content:'';
+    display: block;
+    height: .3em;
+    left: .1em;
+    position: relative;
+    top: .2em;
+    width: .05em;
+  }
+}
+
+// Give each bulb a slight random rotation,
+// and each letter a slight random change of scale
+@for $i from 1 through 26 {
+  .item:nth-child(#{$i}) {
+    .bulb {
+      transform: rotate((random(60))-30 * 1deg);
+    }
+    .letter {
+      transform: scale(0.9 + (random(4)/10));
+    }
+  }
+}
+
+// Colours and positioning for each bulb
+$white:#ffe;
+$purple:#64f;
+$pink:#d19;
+$red:#e02;
+$mint:#6fd;
+$blue:#0be;
+$yellow:#fd7;
+#item--a {.bulb {color:$white}}
+#item--b {.bulb {color:$purple}}
+#item--c {.bulb {color:$pink}}
+#item--d {.bulb {color:$mint}}
+#item--e {.bulb{color:$blue}}
+#item--f {.bulb{color:$yellow}}
+#item--g {.bulb{color:$pink}}
+#item--h {.bulb{color:$blue}}
+#item--i {.bulb{color:$mint}right:1.7em}
+#item--j {.bulb{color:$red}}
+#item--k {.bulb{color:$blue}}
+#item--l {.bulb{color:$mint}}
+#item--m {.bulb{color:$yellow}}
+#item--n {.bulb{color:$pink}}
+#item--o {.bulb{color:$red}}
+#item--p {.bulb{color:$mint}}
+#item--q {.bulb{color:$pink}left:2em}
+#item--r {.bulb{color:$mint}}
+#item--s {.bulb{color:$white}}
+#item--t {.bulb{color:$yellow}right:1em}
+#item--u {.bulb{color:$purple}}
+#item--v {.bulb{color:$red}}
+#item--w {.bulb{color:$blue}}
+#item--x {.bulb{color:$yellow}}
+#item--y {.bulb{color:$red}}
+#item--z {.bulb{color:$pink}left:1em}
+
