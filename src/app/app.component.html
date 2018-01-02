@@ -1,7 +1,7 @@
 <ul *ngFor="let letterow of letters"  class="row">
   <li *ngFor="let letter of letterow" id="item--{{letter}}" class="item">
     <!-- diference ngClass and class??-->
-    <span  [ngClass]="{'bulb': true,'lit': letterActive == letter}"></span>
+    <span  [ngClass]="{'bulb': true,'lit': compareLetters(letter)}"></span>
     <span class="letter" (click)="pressLetter(letter)">{{letter}}</span>
   </li>
 </ul>

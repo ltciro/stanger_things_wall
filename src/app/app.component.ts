@@ -20,14 +20,18 @@ export class AppComponent {
     this.changeLetter(event.key);
   }
   changeLetter(letter): void {
-    if (letter === this.letterActive) {
+    // remove class for one second if press the same letter to simulate a off/on effect
+    if (this.compareLetters(letter)) {
       this.letterActive = '';
       setTimeout(() => {
         this.letterActive = letter;
       }, 100);
       return;
-    }
-    // why this here
+    }else {
     this.letterActive = letter;
+    }
+  }
+  compareLetters(letter): boolean {
+    return letter === this.letterActive;
   }
 }
